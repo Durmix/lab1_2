@@ -32,11 +32,7 @@ public class Invoice {
 
     private Id id;
 
-    public static Invoice createInstance(Id aggregateId, ClientData client) {
-        return new Invoice(aggregateId, client);
-    }
-
-    private Invoice(Id invoiceId, ClientData client) {
+    Invoice(Id invoiceId, ClientData client) {
         this.id = invoiceId;
         this.client = client;
         this.items = new ArrayList<>();

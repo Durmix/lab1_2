@@ -7,10 +7,6 @@ import java.math.BigDecimal;
 
 public class TaxCalculatorImpl implements TaxCalculator {
 
-    static TaxCalculatorImpl createInstance() {
-        return new TaxCalculatorImpl();
-    }
-
     public Tax calculate(ProductData product, Money amount) {
         BigDecimal ratio = null;
         String desc = null;

@@ -18,8 +18,8 @@ import pl.com.bottega.ecommerce.sharedkernel.Money;
 public class BookKeeper {
 
     public Invoice issuance(InvoiceRequest invoiceRequest) {
-        Invoice invoice = Invoice.createInstance(Id.generate(), invoiceRequest.getClient());
-        TaxCalculator taxCalculator = TaxCalculatorImpl.createInstance();
+        Invoice invoice = InvoiceFactory.createInvoice(Id.generate(), invoiceRequest.getClient());
+        TaxCalculator taxCalculator = TaxCalculatorImplFactory.createTaxCalculator();
         for (RequestItem item : invoiceRequest.getItems()) {
             Money net = item.getTotalCost();
             Tax tax = taxCalculator.calculate(item.getProductData(), net);

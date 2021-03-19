@@ -24,11 +24,7 @@ public class Payment {
 
     private Id aggregateId;
 
-    public static Payment createInstance(Id aggregateId, ClientData client, Money amount) {
-        return new Payment(aggregateId, client, amount);
-    }
-
-    private Payment(Id aggregateId, ClientData clientData, Money amount) {
+    Payment(Id aggregateId, ClientData clientData, Money amount) {
         this.aggregateId = aggregateId;
         this.clientData = clientData;
         this.amount = amount;
@@ -37,6 +33,6 @@ public class Payment {
     public Payment rollBack() {
         Id id = Id.generate();
 
-        return createInstance(id, clientData, amount.multiplyBy(-1));
+        return PaymentFactory.createPayment(id, clientData, amount.multiplyBy(-1));
     }
 }
